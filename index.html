@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Wall Paint Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">▧</div>
+    <div>
+      <h1>RoomColor</h1>
+      <p>Smart Wall Paint Visualizer</p>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <p class="eyebrow">START HERE</p>
+        <h2>Your room</h2>
+        <p class="muted">Upload a JPG or PNG photo of your room.</p>
+
+        <label class="upload-button" for="imageUpload">Choose room photo</label>
+        <input id="imageUpload" type="file" accept="image/png,image/jpeg" />
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">WALL SELECTION</p>
+        <h2>Outline a wall</h2>
+        <p class="muted">
+          Click around a wall area to create its outline. Use at least three
+          points, then finish the selection.
+        </p>
+
+        <button id="finishButton" class="button button-primary" type="button" disabled>
+          Finish wall selection
+        </button>
+        <button id="undoButton" class="button button-secondary" type="button" disabled>
+          Undo last point
+        </button>
+        <button id="clearButton" class="text-button" type="button" disabled>
+          Clear all wall selections
+        </button>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">PAINT</p>
+        <h2>Choose a color</h2>
+
+        <label class="field-label" for="paintColor">Paint color</label>
+        <div class="color-row">
+          <input id="paintColor" type="color" value="#6c8f83" />
+          <span id="colorHex">#6C8F83</span>
+        </div>
+
+        <label class="field-label" for="opacity">
+          Paint strength <span id="opacityValue">55%</span>
+        </label>
+        <input id="opacity" type="range" min="10" max="90" value="55" />
+        <p class="small-note">The selected color and strength apply to the next wall outline.</p>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">YOUR DESIGN</p>
+        <h2>Preview and save</h2>
+
+        <button id="toggleButton" class="button button-secondary" type="button" disabled>
+          Show original photo
+        </button>
+        <button id="saveButton" class="button button-secondary" type="button" disabled>
+          Save design in browser
+        </button>
+        <button id="loadButton" class="button button-secondary" type="button">
+          Load saved design
+        </button>
+        <button id="downloadButton" class="button button-primary" type="button" disabled>
+          Download preview
+        </button>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-heading">
+        <div>
+          <p class="eyebrow">DESIGN STUDIO</p>
+          <h2>Preview your room</h2>
+        </div>
+        <span class="step-badge">Manual wall selection</span>
+      </div>
+
+      <div class="canvas-card">
+        <canvas id="roomCanvas" width="1200" height="720" aria-label="Room paint preview"></canvas>
+      </div>
+
+      <div class="workspace-footer">
+        <p id="statusMessage" role="status">
+          Upload a room photo to get started.
+        </p>
+        <p class="disclaimer">
+          Colors may look different depending on lighting, wall texture, and screen settings.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
